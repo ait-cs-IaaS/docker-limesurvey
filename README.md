@@ -132,6 +132,7 @@ If you are running LimeSurvey behind a Reverse Proxy you might need some additio
 | ENCRYPT_NONCE      | Data encryption nonce (used in 5.0 and higher) |
 | ENCRYPT_SECRET_BOX_KEY | Data encryption secret box key (used in 5.0 and higher) |
 | LISTEN_PORT     | Apache: Listen port. Default: 8080        |
+| RPC_INTERFACE   | Enable Limesurvey RPC Api                 |
 
 Sensitive information can also be passed `_FILE` to the following environment variables to load the values from the given file path. Example `DB_PASSWORD_FILE=/run/secrets/db_password`.
 

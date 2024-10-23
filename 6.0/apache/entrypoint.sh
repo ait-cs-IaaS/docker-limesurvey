@@ -45,6 +45,7 @@ PUBLIC_URL=${PUBLIC_URL:-}
 URL_FORMAT=${URL_FORMAT:-'path'}
 SHOW_SCRIPT_NAME=${SHOW_SCRIPT_NAME:-'true'}
 TABLE_SESSION=${TABLE_SESSION:-}
+RPC_INTERFACE=${RPC_INTERFACE:-'off'}
 
 DEBUG=${DEBUG:-0}
 DEBUG_SQL=${DEBUG_SQL:-0}
@@ -133,7 +134,8 @@ return array(
     'publicurl'=>'$PUBLIC_URL',
     'debug'=>$DEBUG,
     'debugsql'=>$DEBUG_SQL,
-    'mysqlEngine' => '$DB_MYSQL_ENGINE',
+    'RPCInterface'=>'$RPC_INTERFACE',
+    'mysqlEngine'=>'$DB_MYSQL_ENGINE',
   )
 );
 
