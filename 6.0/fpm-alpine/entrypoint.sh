@@ -46,6 +46,14 @@ URL_FORMAT=${URL_FORMAT:-'path'}
 SHOW_SCRIPT_NAME=${SHOW_SCRIPT_NAME:-'true'}
 TABLE_SESSION=${TABLE_SESSION:-}
 RPC_INTERFACE=${RPC_INTERFACE:-'off'}
+EMAIL_METHOD=${EMAIL_METHOD:-'mail'}
+EMAIL_SMTP_HOST=${EMAIL_SMTP_HOST:-'localhost'}
+EMAIL_SMTP_USER=${EMAIL_SMTP_USER:-}
+file_env 'EMAIL_SMTP_PASSWORD'
+EMAIL_SMTP_SSL=${EMAIL_SMTP_SSL:-}
+SITEADMIN_EMAIL=${SITEADMIN_EMAIL:-email@example.net}
+SITEADMIN_BOUNCE=${SITEADMIN_BOUNCE:-email@example.net}
+SITEADMIN_NAME=${SITEADMIN_NAME:-'Your Name'}
 
 DEBUG=${DEBUG:-0}
 DEBUG_SQL=${DEBUG_SQL:-0}
@@ -129,6 +137,14 @@ return array(
     'debugsql'=>$DEBUG_SQL,
     'RPCInterface'=>'$RPC_INTERFACE',
     'mysqlEngine'=>'$DB_MYSQL_ENGINE',
+    'emailmethod'=>'$EMAIL_METHOD',
+    'emailsmtphost'=>'$EMAIL_SMTP_HOST',
+    'emailsmtpuser'=>'$EMAIL_SMTP_USER',
+    'emailsmtppassword'=>'$EMAIL_SMTP_PASSWORD',
+    'emailsmtpssl'=>'$EMAIL_SMTP_SSL',
+    'siteadminemail'=>'$SITEADMIN_EMAIL',
+    'siteadminbounce'=>'$SITEADMIN_BOUNCE',
+    'siteadminname'=>'$SITEADMIN_NAME',
   )
 );
 

@@ -9,15 +9,15 @@ Dockerfile to build a [LimeSurvey](https://limesurvey.org) Image for the Docker 
 
 ## Quick reference
 
-- **Maintained by:** https://github.com/martialblog/
+- **Maintained by:** <https://github.com/martialblog/>
 - **Where to get help:** [GitHub Issues](https://github.com/martialblog/docker-limesurvey/issues)
 
 ## Supported tags and respective Dockerfile links
 
-- [`6-apache`, `6.<BUILD-NUMBER>-apache`, `latest` ](https://github.com/martialblog/docker-limesurvey/blob/master/6.0/apache/Dockerfile)
+- [`6-apache`, `6.<BUILD-NUMBER>-apache`, `latest`](https://github.com/martialblog/docker-limesurvey/blob/master/6.0/apache/Dockerfile)
 - [`6-fpm`, `6.<BUILD-NUMBER>-fpm`](https://github.com/martialblog/docker-limesurvey/blob/master/6.0/fpm/Dockerfile)
 - [`6-fpm-alpine`, `6.<BUILD-NUMBER>-fpm-alpine`](https://github.com/martialblog/docker-limesurvey/blob/master/6.0/fpm-alpine/Dockerfile)
-- [`5-apache`, `5.<BUILD-NUMBER>-apache`, `latest` ](https://github.com/martialblog/docker-limesurvey/blob/master/5.0/apache/Dockerfile)
+- [`5-apache`, `5.<BUILD-NUMBER>-apache`, `latest`](https://github.com/martialblog/docker-limesurvey/blob/master/5.0/apache/Dockerfile)
 - [`5-fpm`, `5.<BUILD-NUMBER>-fpm`](https://github.com/martialblog/docker-limesurvey/blob/master/5.0/fpm/Dockerfile)
 - [`5-fpm-alpine`, `5.<BUILD-NUMBER>-fpm-alpine`](https://github.com/martialblog/docker-limesurvey/blob/master/5.0/fpm-alpine/Dockerfile)
 
@@ -31,7 +31,7 @@ This image is also available in a `rootless` variant with `www-data` as default 
 
 To change to Apache Webserver configuration, mount a Volume into the Container at:
 
- - `/etc/apache2/sites-available/000-default.conf`
+- `/etc/apache2/sites-available/000-default.conf`
 
 See the example configuration provided.
 
@@ -46,7 +46,7 @@ To use the fpm image, you need an additional web server that can proxy http-requ
 If you would like to run the fpm setup with https, you can get a free certificate from Letsencrypt. As an example, the configuration in *docker-compose.fpm-certbot.yml*
 will take care of getting a certificate and installing it. Please note that you will have to adjust the domain name in the file *examples/nginx-certbot.conf* to match
 the domain used in the *HOSTNAMES* variable in the docker-compose configuration file. If you added both the a domain and the hostname *www* within the domain,
-*nginx-certbot.conf* needs to contain the domain without the hostname. E.g. if you set *"HOSTNAMES=example.org www.example.org"*, the path in *nginx-certbot.conf* needs
+*nginx-certbot.conf* needs to contain the domain without the hostname. E.g. if you set *"HOSTNAMES=example.org <www.example.org>"*, the path in *nginx-certbot.conf* needs
 to contain *example.org*.
 
 # Using an external database
@@ -69,7 +69,7 @@ The entrypoint will create a new config.php if none is provided and run the Lime
 
 To change to LimeSurvey configuration, you can mount a Volume into the Container at:
 
- - `/my-data/config.php:/var/www/html/application/config/config.php`
+- `/my-data/config.php:/var/www/html/application/config/config.php`
 
 **Hint**: If this configuration is present before the installation, the LimeSurvey Web Installer will not run automatically.
 
@@ -77,23 +77,23 @@ To change to LimeSurvey configuration, you can mount a Volume into the Container
 
 LimeSurvey version 4.0 and newer support data encryption, this image give you these options:
 
-* Provide a security.php file directly (volume)
-* Provide encryption keys for the `security.php` file (environment variables)
-* Provide nothing and get a non-persistent `security.php` file
+- Provide a security.php file directly (volume)
+- Provide encryption keys for the `security.php` file (environment variables)
+- Provide nothing and get a non-persistent `security.php` file
 
-For further details on the settings see: https://manual.limesurvey.org/Data_encryption
+For further details on the settings see: <https://manual.limesurvey.org/Data_encryption>
 
 # Reverse Proxy configuration
 
 If you are running LimeSurvey behind a Reverse Proxy you might need some additional configuration in the Proxy. For example:
 
-* Apache: `ProxyPreserveHost On`
-* Nginx: `fastcgi_param HTTP_HOST my-survey.example.local;`
-* Traefik: Set the Host Header explicitly via a customRequestHeaders
+- Apache: `ProxyPreserveHost On`
+- Nginx: `fastcgi_param HTTP_HOST my-survey.example.local;`
+- Traefik: Set the Host Header explicitly via a customRequestHeaders
 
 ## Traefik example
 
-**Hint**: if you want to deploy LimeSurvey on a sub-path (e.g. https://example.com/limesurvey) you have to set the BASE_URL and adjust the Containers Webservers. See the docker-compose Traefik example in the repository.
+**Hint**: if you want to deploy LimeSurvey on a sub-path (e.g. <https://example.com/limesurvey>) you have to set the BASE_URL and adjust the Containers Webservers. See the docker-compose Traefik example in the repository.
 
 ```
 # BASE_URL = /limesurvey
@@ -133,6 +133,11 @@ If you are running LimeSurvey behind a Reverse Proxy you might need some additio
 | ENCRYPT_SECRET_BOX_KEY | Data encryption secret box key (used in 5.0 and higher) |
 | LISTEN_PORT     | Apache: Listen port. Default: 8080        |
 | RPC_INTERFACE   | Enable Limesurvey RPC Api                 |
+| EMAIL_METHOD    | 'mail': internal PHP Mailer, 'sendmail', or 'smtp' |
+| EMAIL_SMTP_HOST | Email SMTP Host name (e.g. 'smtp1.example.com:25') |
+| EMAIL_SMTP_USER | SMTP authorisation username               |
+| EMAIL_SMTP_PASSWORD | SMTP authorisation password           |
+| EMAIL_SMTP_SSL  | 'ssl' for SSL/TLS or 'tls' for StartTLS   |
 
 Sensitive information can also be passed `_FILE` to the following environment variables to load the values from the given file path. Example `DB_PASSWORD_FILE=/run/secrets/db_password`.
 
@@ -146,7 +151,7 @@ ENCRYPT_NONCE_FILE
 ENCRYPT_SECRET_BOX_KEY_FILE
 ```
 
-For further details on the settings see: https://manual.limesurvey.org/Optional_settings#Advanced_Path_Settings
+For further details on the settings see: <https://manual.limesurvey.org/Optional_settings#Advanced_Path_Settings>
 
 # Running LimeSurvey with docker-compose
 
@@ -168,7 +173,7 @@ http://localhost:8080/index.php/admin
 
 A Helm Chart for this Image can be used for deployments. Please refer to the Helm Repository for further details:
 
-https://github.com/martialblog/helm-charts
+<https://github.com/martialblog/helm-charts>
 
 # Upgrade Guide
 
@@ -221,9 +226,10 @@ When running LimeSurvey behind a reverse proxy with a subdirectory (i.e. example
 This might be fixed by setting the HTTP Host Header in the reverse proxy explicitly.
 
 See:
-- https://github.com/martialblog/docker-limesurvey/issues/127
+
+- <https://github.com/martialblog/docker-limesurvey/issues/127>
 
 # References
 
-- https://www.limesurvey.org/
-- https://github.com/LimeSurvey/LimeSurvey/
+- <https://www.limesurvey.org/>
+- <https://github.com/LimeSurvey/LimeSurvey/>
